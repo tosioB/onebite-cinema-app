@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className={style.container}>
       <header className={style.header}>
-        <Link href={"/"}>NIBITE CINEMA</Link>
+        <Link href={"/"}>ONEBITE CINEMA</Link>
       </header>
       <Searchbar />
       {children}
