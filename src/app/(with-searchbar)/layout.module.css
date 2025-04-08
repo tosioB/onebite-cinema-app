@@ -1,0 +1,12 @@
+.header {
+  height: 60px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 60px;
+}
+
+.header > a {
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(229, 9, 20);
+}
