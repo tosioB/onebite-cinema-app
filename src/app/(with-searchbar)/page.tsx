@@ -5,7 +5,7 @@ import { MovieData } from "@/type";
 async function AllMovie() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`,
-    { next: { revalidate: 60 } }
+    { next: { revalidate: 3600 } }
   );
 
   if (!response.ok) {
@@ -26,7 +26,7 @@ async function AllMovie() {
 async function RecoMovie() {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/random`,
-    { next: { revalidate: 3 } }
+    { cache: "no-store" }
   );
 
   if (!response.ok) {
