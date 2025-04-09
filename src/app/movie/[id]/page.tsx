@@ -1,4 +1,9 @@
+import { notFound } from "next/navigation";
 import style from "./page.module.css";
+
+export function generateStaticParams() {
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+}
 
 export default async function Page({
   params,
@@ -6,10 +11,13 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${params.id}`,
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${(await params).id}`,
     { cache: "no-store" }
   );
   if (!response.ok) {
+    if (response.status === 404) {
+      notFound();
+    }
     return <div>오류가 발생했습니다.</div>;
   }
 
@@ -30,12 +38,12 @@ export default async function Page({
         style={{ backgroundImage: `url('${posterImgUrl}')` }}
         className={style.cover_img_container}
       >
-        <img src={posterImgUrl} />
+        <img src={posterImgUrl} alt={""} />
       </div>
       <div className={style.title}>{title}</div>
       <div className={style.releaseDate}>
         {releaseDate}&nbsp;/&nbsp;
-        {genres.map((genre, index) => (
+        {genres.map((genre: string, index: number) => (
           <span key={index}>
             {genre}
             {index < genres.length - 1 && ", "}&nbsp;
