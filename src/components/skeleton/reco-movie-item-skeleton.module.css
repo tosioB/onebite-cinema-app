@@ -1,0 +1,5 @@
+.img_box {
+  width: calc(33.333% - 6px);
+  aspect-ratio: 179 / 256;
+  background-color: rgb(230, 230, 230);
+}
