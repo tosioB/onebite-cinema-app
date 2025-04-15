@@ -11,7 +11,7 @@ export function generateStaticParams() {
 async function MovieDetail({ movieId }: { movieId: string }) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${movieId}`,
-    { cache: "no-store" }
+    { cache: "force-cache" }
   );
   if (!response.ok) {
     if (response.status === 404) {
@@ -59,7 +59,8 @@ async function MovieDetail({ movieId }: { movieId: string }) {
 
 async function MovieList({ movieId }: { movieId: string }) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/movie/${movieId}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/movie/${movieId}`,
+    { next: { tags: [`review-${movieId}`] } }
   );
 
   if (!response.ok) {
