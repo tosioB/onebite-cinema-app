@@ -2,6 +2,7 @@
 
 import { deleteReviewAction } from "@/actions/delete-review.action";
 import { useActionState, useEffect, useRef } from "react";
+import style from "./review-item-delete-button.module.css";
 
 export default function ReviewItemDeleteButton({
   reviewId,
@@ -29,7 +30,12 @@ export default function ReviewItemDeleteButton({
       {isPending ? (
         <div>...</div>
       ) : (
-        <div onClick={() => formRef.current?.requestSubmit()}>삭제하기</div>
+        <div
+          className={style.delete_btn}
+          onClick={() => formRef.current?.requestSubmit()}
+        >
+          삭제하기
+        </div>
       )}
     </form>
   );

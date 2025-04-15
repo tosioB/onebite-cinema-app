@@ -18,10 +18,5 @@
 }
 
 .content {
-}
-
-.delete_btn {
-  text-decoration: underline;
-  color: gray;
-  cursor: pointer;
+  color: white;
 }
